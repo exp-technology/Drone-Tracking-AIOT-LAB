@@ -1,0 +1,21 @@
+# botsort_reid.yaml
+tracker_type: botsort
+
+# ---- thresholds & buffers ----
+track_high_thresh: 0.5
+track_low_thresh: 0.1
+new_track_thresh: 0.65
+match_thresh: 0.85
+track_buffer: 30
+max_age: 50
+min_box_area: 10
+fuse_score: true
+
+# ---- camera motion compensation ----
+gmc_method: sparseOptFlow
+
+# ---- ReID ----
+with_reid: true
+model: auto              # 或填 ReID 權重檔路徑（如 osnet_x0_25_msmt17.pt）
+proximity_thresh: 0.5
+appearance_thresh: 0.25

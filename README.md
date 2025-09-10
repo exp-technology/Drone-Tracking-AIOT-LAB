@@ -55,7 +55,11 @@ Recommended clips:
 Provide FPS / latency overlay in at least one clip for quantitative illustration.
 
 ---
-## 5. Datasets (Drone / Human Tracking)
+## 5. Datasets (Drone)
+
+We constructed a dataset comprising 2,850 synthetic samples and 5,481 real samples sourced from publicly available datasets. For retraining the object detection model, the training set included 5,904 samples (3,912 real and 1,992 synthetic), while the validation set contained 2,427 samples (1,569 real and 858 synthetic). The complete dataset is publicly accessible:
+
+[![Drone Dataset (Roboflow)]](https://universe.roboflow.com/aiotlab-lnkrh/mix_v005-z2ksj/dataset/2)
 
 ---
 ## 6. Methodology
@@ -108,8 +112,6 @@ Drone-Tracking-AIOT-LAB/
     control_widget.py             # Manual + auto tracking controls
     Widge_Component.py            # Shared UI elements
     no_videos_available.jpg       # Placeholder frame
-  paper/
-    otcn_aiot_lab2025.pdf         # Reference paper (provide citation)
 ```
 
 ---
@@ -133,12 +135,8 @@ pip install ultralytics opencv-python numpy pymavlink pyserial PyQt6 qasync
 ```
 HOST_IP = "<DRONE_SBC_IP>"    # Bound + source for UDP services
 PC_IP   = "<GROUND_PC_IP>"     # Destination for TCP video
-MODEL   = "v8n_mix005_v2_1000" # Base name (tries <name>_<imgsz>.engine etc.)
+MODEL   = "Drone" # Base name (tries <name>_<imgsz>.engine etc.)
 TRT_IMGSZ = 512
-peers = [
-  {"name":"mavros","dst":("127.0.0.1",14550),"bind":("127.0.0.1",14650)},
-  {"name":"app",   "dst":("127.0.0.1",14551),"bind":("127.0.0.1",14651)},
-]
 ```
 
 ---
@@ -167,31 +165,9 @@ Enter `HOST_IP` → Connect.
 6. Reset Selection → clears ID & stops auto mode.
 
 ---
-## 12. Logging & Reproducibility
-- Control log: `autotrack_cmds.csv` with (time, target_id, vx, vy, vz, yaw_rate).
-- Recommended to also capture raw telemetry (extend `send_data`).
-- For experiments include: hardware specs, model variant, image size, average FPS, ID switches, loss recovery latency.
-
----
-## 14. Extending the Framework
-- Multi-class tracking: relax `classes=[0]`.
-- Add depth / range fusion (e.g., stereo or LiDAR) for better distance control.
-- Replace velocity PIDs with MPC or RL policy (interface in `set_velocity_yawrate`).
-- Introduce safety geofencing & emergency failsafe (hover/land on anomalies).
-- Add dataset recording: save synchronized frames + META for offline training.
-
----
-## 15. Limitations
-- Assumes stable illumination; heavy motion blur degrades ReID.
-- Single locked target; no dynamic priority switching policy implemented.
-- No explicit obstacle avoidance integrated in control loop.
-- Loss recovery purely timeout-based (no semantic re-acquire logic yet).
-
----
 ## 16. Safety Notice
 Autonomous velocity control can induce unsafe states:
 - Always maintain manual RC override.
 - Test PIDs at low altitude first.
 - Avoid operation near people, reflective glass, or GPS-denied cluttered interiors.
 - Log every flight session for traceability.
-

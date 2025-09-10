@@ -19,13 +19,9 @@ A research-oriented platform for real‑time human target detection, multi-objec
 
 ### (1) Drone Tracker Compare Demo
 [![Drone Tracker Compare Demo](https://img.youtube.com/vi/JU0Ht4I6_2k/hqdefault.jpg)](https://youtu.be/JU0Ht4I6_2k "Drone Tracker Compare Demo")
-*Comparison of tracking behavior under different conditions (model / scenario).*
 
 ### (2) System Tracking (Person / Drone) Demo
 [![System Tracking (Person / Drone) Demo](https://img.youtube.com/vi/TBSe7B-PBjM/hqdefault.jpg)](https://youtu.be/TBSe7B-PBjM "System Tracking (Person / Drone) Demo")
-*End‑to‑end demonstration: human + Drone target tracking*
-
-
 
 ---
 ## 4. Datasets (Drone)

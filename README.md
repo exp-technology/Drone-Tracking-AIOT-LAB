@@ -30,13 +30,11 @@ We constructed a dataset comprising 2,850 synthetic samples and 5,481 real sampl
 
 [Drone Dataset (Roboflow)](https://universe.roboflow.com/aiotlab-lnkrh/mix_v005-z2ksj/dataset/2)
 
-
 ---
 ## 5. UI & Processing Pipeline
 ![UI & Processing Pipeline](image/auto_tracking_architecture.png)
 
-Figure: Integrated interface (top) showing live video with locked target (green box), visual tracking cross and autonomous tracking dashed box, and control panels (alt/yaw, pitch/roll, arm/disarm, tracking toggle). Bottom row illustrates perception-to-control flow: Input → YOLO (TensorRT) → Tracking Algorithm → PID Target Tracking Calculation → Drone Control.
-
+Figure: Control UI & Tracking Workflow
 
 ---
 ## 6. Repository Structure
